@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Catálogo de Categorías</h1>
+<a href="{% url 'categoria_create' %}">Agregar Nueva Categoría</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre de la Categoría</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for Categoria in categorias %}
+    <tr>
+        <td>{{ Categoria.nombre }}</td>
+        
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="2">No hay categorías disponibles en el catálogo.</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

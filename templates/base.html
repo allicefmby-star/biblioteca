@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  
+  <title>{% block title %}Biblioteca Digital{% endblock %}</title>
+  
+  <style>
+    /*
+      Paleta de Metal Sonic:
+      - Azul Cobalto (Cuerpo): #0047AB
+      - Rojo Brillante (Ojos): #FF0000
+      - Amarillo (Motor/Cintura): #FFD700
+      - Negro/Carbón (Articulaciones): #1a1a1a
+      - Plata/Acero (Texto): #B0C4DE 
+    */
+
+    body {
+      margin: 0;
+      /* Fuente robótica y limpia */
+      font-family: 'Exo 2', sans-serif;
+      background-color: #0d0d0f; /* Fondo negro robótico */
+      color: #B0C4DE; /* Color acero claro para texto */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      /* El azul metálico principal de Metal Sonic */
+      background-color: #0047AB; 
+      /* El borde amarillo de su cintura/motor */
+      border-bottom: 3px solid #FFD700;
+      padding: 10px 0;
+      text-align: center;
+      /* Sombra para darle profundidad */
+      box-shadow: 0 4px 10px rgba(0, 71, 171, 0.5);
+    }
+
+    .container {
+      flex: 1;
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #1a1a1a; /* Fondo de contenido carbón */
+      padding: 20px;
+      /* Borde azul brillante, como un HUD */
+      border: 1px solid #0047AB;
+      box-shadow: 0 0 15px rgba(0, 71, 171, 0.4);
+      border-radius: 0; /* Bordes afilados y robóticos */
+    }
+
+    .navbar-brand {
+      /* Fuente angular y futurista */
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700; /* Amarillo brillante */
+      text-decoration: none;
+      margin-left: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      /* Pequeño brillo para el texto */
+      text-shadow: 0 0 5px #FFD700;
+    }
+
+    .navbar-nav {
+      display: inline-block;
+      margin-left: 30px;
+    }
+
+    .navbar-nav a {
+      color: #B0C4DE; /* Texto acero */
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 6px 12px;
+      border-radius: 0;
+      transition: background 0.3s, color 0.3s;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .navbar-nav a:hover {
+      /* Alerta roja! Inspirado en sus ojos */
+      background-color: #111;
+      color: #FF0000;
+      border: 1px solid #FF0000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      border: 1px solid #0047AB; /* Borde de tabla azul */
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #333; /* Divisiones sutiles */
+      text-align: left;
+    }
+
+    th {
+      background-color: #0047AB; /* Encabezado de tabla azul */
+      color: #FFFFFF;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background-color: #222; /* Intercalado robótico */
+    }
+    
+    tr:hover {
+      /* Resaltado de "objetivo" rojo */
+      background-color: #330000;
+      color: #fff;
+    }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #0059b3; /* Azul brillante, más claro */
+      text-transform: uppercase;
+      margin-top: 0;
+      /* Un divisor más tecnológico */
+      border-bottom: 2px dashed #444;
+      padding-bottom: 5px;
+    }
+
+    footer {
+      background-color: #0047AB; /* Azul principal */
+      color: #aaa;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 12px;
+      margin-top: auto;
+      border-top: 3px solid #FFD700; /* Borde amarillo */
+      letter-spacing: 1px;
+    }
+    
+    footer span {
+      /* El span resalta en amarillo */
+      color: #FFD700;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="navbar-brand" href="{% url 'home' %}">METAL-BASE</a>
+    <div class="navbar-nav">
+      <a href="{% url 'catalogo' %}">Catálogo</a>
+      <a href="{% url 'circulacion' %}">Circulación</a>
+      <a href="{% url 'colecciones' %}">Colecciones</a>
+      <a href="{% url 'inventario' %}">Inventario</a>
+      <a href="{% url 'personas' %}">Personas</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <footer>
+    <p>SYSTEM ONLINE &copy; 2025 - <span>dead or alive your a mine</span></p>
+  </footer>
+
+</body>
+</html>

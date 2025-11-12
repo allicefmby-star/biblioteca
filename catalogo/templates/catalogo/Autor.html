@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lista de Autores</h1>
+<a href="{% url 'autor_create' %}">Crear nuevo autor</a>    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>País</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Autor in autores %}
+            <tr>
+                <td>{{ Autor.nombre }}</td>
+                <td>{{ Autor.apellido }}</td>
+                <td>{{ Autor.pais }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">No hay autores disponibles en el catálogo.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Gestión de Socios</h2>
+<a href="{% url 'socio_create' %}">Registrar Nuevo Socio</a>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Activo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for socio in socios %}
+        <tr>
+            <td>{{ socio.nombre }}</td>
+            <td>{{ socio.email }}</td>
+            <td>{{ socio.telefono }}</td>
+            <td>{{ socio.activo }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center text-muted">No hay socios registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

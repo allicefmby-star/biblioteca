@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+        <h1>inicio de pagina de Circulacion</h1>
+    
+        <a href="{% url 'prestamos' %}">ver prestamos</a>
+        <a href="{% url 'reservas' %}">ver reservas</a>
+        <a href="{% url 'multas' %}">ver multas</a> 
+
+{% endblock content %}

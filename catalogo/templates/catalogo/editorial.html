@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Catálogo de editoriales</h1>
+<a href="{% url 'editorial_create' %}">Agregar Nuevo editorial</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre de la Editorial</th>
+            <th>País</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for editorial in editoriales %}
+    <tr>
+        <td>{{ editorial.nombre }}</td>
+        <td>{{ editorial.pais }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="2">No hay editoriales disponibles en el catálogo.</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} inventario home {% endblock %}
+
+{% block content %}
+<h1>Lista pagina de inventario</h1>
+
+
+<a href="{% url 'ejemplares' %}">ver ejemplares</a>
+<a href="{% url 'provedores' %}">ver provedores</a>
+<a href="{% url 'ingresos' %}">ver ingresos</a>
+
+{% endblock %}

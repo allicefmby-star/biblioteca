@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% block title %}PANEL DE CONTROL - INICIO{% endblock %}
+
+{% block content %}
+
+<style>
+  /* Estilos exclusivos para el Home */
+
+  .hero-section {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 2px solid #0047AB;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animación del Reactor Core (Pecho de Metal Sonic) */
+  .core-reactor {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #FFD700 10%, #ff8800 40%, #000 100%);
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    border: 4px solid #555;
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #ff8800;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 15px #FFD700; transform: scale(1); }
+    50% { box-shadow: 0 0 30px #FFD700, 0 0 50px #FF4500; transform: scale(1.05); }
+    100% { box-shadow: 0 0 15px #FFD700; transform: scale(1); }
+  }
+
+  .system-status {
+    font-family: 'Orbitron', sans-serif;
+    color: #0047AB;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .system-sub {
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  /* Grid de Módulos */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .module-card {
+    background-color: #0f0f12;
+    border: 1px solid #333;
+    padding: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Efecto de esquina tecnológica */
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 20px solid #0047AB; /* Azul */
+    border-left: 20px solid transparent;
+    transition: border-top-color 0.3s;
+  }
+
+  .module-card h3 {
+    color: #B0C4DE;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  .module-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .module-status {
+    font-size: 0.7rem;
+    color: #0047AB;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  /* Hover agresivo estilo Metal Sonic */
+  .module-card:hover {
+    border-color: #FF0000; /* Borde rojo */
+    background-color: #1a1a1a;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+  }
+
+  .module-card:hover h3 {
+    color: #FF0000; /* Título rojo */
+  }
+
+  .module-card:hover .module-status {
+    color: #FFD700; /* Texto de estado amarillo */
+    content: "ACCESSING...";
+  }
+
+  .module-card:hover::before {
+    border-top-color: #FF0000; /* Esquina roja */
+  }
+
+  /* Sección de logs tipo terminal */
+  .terminal-log {
+    margin-top: 40px;
+    background-color: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: #00ff00; /* Verde clásico de terminal, o podría ser azul */
+  }
+  .log-line { margin: 5px 0; }
+  .log-time { color: #0047AB; margin-right: 10px; }
+
+</style>
+
+<div class="hero-section">
+  <div class="core-reactor"></div>
+  <h1 class="system-status">SISTEMA EN LÍNEA</h1>
+  <h1 class="system-status"> SONIC DEAD OR ALIVE IS MINE</h1>
+  <p class="system-sub">Protocolo de Biblioteca v.2.5 // Objetivo: Adquisición de Datos</p>
+</div>
+
+<div class="dashboard-grid">
+  
+  <a href="{% url 'catalogo' %}" class="module-card">
+    <div>
+      <h3>> CATÁLOGO</h3>
+      <p>Búsqueda y recuperación de registros bibliográficos.</p>
+    </div>
+    <div class="module-status">ESTADO: ACTIVO</div>
+  </a>
+
+  <a href="{% url 'circulacion' %}" class="module-card">
+    <div>
+      <h3>> CIRCULACIÓN</h3>
+      <p>Control de flujo de activos y asignación de recursos.</p>
+    </div>
+    <div class="module-status">ESTADO: ESPERA</div>
+  </a>
+
+  <a href="{% url 'inventario' %}" class="module-card">
+    <div>
+      <h3>> INVENTARIO</h3>
+      <p>Análisis de integridad física y conteo de unidades.</p>
+    </div>
+    <div class="module-status">ESTADO: ESTABLE</div>
+  </a>
+
+  <a href="{% url 'personas' %}" class="module-card">
+    <div>
+      <h3>> USUARIOS</h3>
+      <p>Base de datos de entidades biológicas (Docentes/Alumnos).</p>
+    </div>
+    <div class="module-status">ESTADO: SEGURO</div>
+  </a>
+
+</div>
+
+<div class="terminal-log">
+  <div class="log-line"><span class="log-time">[08:00:01]</span> SYSTEM_BOOT_SEQUENCE_INITIATED... OK</div>
+  <div class="log-line"><span class="log-time">[08:00:05]</span> CONNECTING_TO_MAIN_DATABASE... SUCCESS</div>
+  <div class="log-line"><span class="log-time">[08:00:12]</span> LOADING_USER_INTERFACE... METAL_SONIC_THEME_APPLIED</div>
+  <div class="log-line" style="color: #FFD700;"><span class="log-time">[NOW]</span> WAITING_FOR_INPUT...</div>
+</div>
+
+{% endblock %}
