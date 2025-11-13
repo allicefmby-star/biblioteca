@@ -7,18 +7,21 @@
             <tr>
                 <th>Nombre del Proveedor</th>
                 <th>RFC</th>
-
-            </tr>
+                <th>Acciones</th> </tr>
         </thead>
         <tbody>
             {% for proveedor in proveedores %}
             <tr>
                 <td>{{ proveedor.nombre }}</td>
                 <td> {{ proveedor.rfc }} </td>
+                <td>
+                    <a href="{% url 'proveedor_update' proveedor.pk %}">Editar</a>
+                    <a href="{% url 'proveedor_delete' proveedor.pk %}" style="color: #ff4136;">Borrar</a>
+                </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4" class="text-center text-muted">No hay proveedores agregados.</td>
+                <td colspan="3" class="text-center text-muted">No hay proveedores agregados.</td>
             </tr>
             {% endfor %}
         </tbody>

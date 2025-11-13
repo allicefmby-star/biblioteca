@@ -8,7 +8,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>País</th>
-            </tr>
+                <th>Acciones</th> </tr>
         </thead>
         <tbody>
         {% for Autor in autores %}
@@ -16,14 +16,16 @@
                 <td>{{ Autor.nombre }}</td>
                 <td>{{ Autor.apellido }}</td>
                 <td>{{ Autor.pais }}</td>
+                <td>
+                    <a href="{% url 'autor_update' Autor.pk %}">Editar</a>
+                    <a href="{% url 'autor_delete' Autor.pk %}" style="color: #ff4136;">Borrar</a>
+                </td>
             </tr>
         {% empty %}
             <tr>
-                <td colspan="3">No hay autores disponibles en el catálogo.</td>
+                <td colspan="4">No hay autores disponibles en el catálogo.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-
 {% endblock %}

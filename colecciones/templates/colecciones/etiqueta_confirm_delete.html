@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Borrar Etiqueta</h1>
+    <p>¿Estás seguro de que quieres borrar la etiqueta: <strong>{{ object.nombre }}</strong>?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="color: red;">Confirmar Borrado</button>
+        <a href="{% url 'lista_etiquetas' %}">Cancelar</a>
+    </form>
+{% endblock %}

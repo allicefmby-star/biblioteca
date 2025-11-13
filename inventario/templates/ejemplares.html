@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h2>Ejemplares</h2>
 <a href="{% url 'ejemplar_create' %}">Agregar Nuevo Ejemplar</a>
@@ -9,7 +8,7 @@
             <th>Codigo de barras</th>
             <th>Ubicacion</th>
             <th>Ingreso</th>
-        </tr>
+            <th>Acciones</th> </tr>
     </thead>
     <tbody>
         {% for ejemplar in ejemplares %}
@@ -17,6 +16,10 @@
             <td>{{ ejemplar.codigo_barras }}</td>
             <td>{{ ejemplar.ubicacion }}</td>
             <td>{{ ejemplar.ingreso }}</td>
+            <td>
+                <a href="{% url 'ejemplar_update' ejemplar.pk %}">Editar</a>
+                <a href="{% url 'ejemplar_delete' ejemplar.pk %}" style="color: #ff4136;">Borrar</a>
+            </td>
         </tr>
         {% empty %}
         <tr>

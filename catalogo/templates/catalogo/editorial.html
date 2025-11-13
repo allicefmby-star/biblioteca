@@ -7,17 +7,21 @@
         <tr>
             <th>Nombre de la Editorial</th>
             <th>País</th>
-        </tr>
+            <th>Acciones</th> </tr>
     </thead>
     <tbody>
     {% for editorial in editoriales %}
     <tr>
         <td>{{ editorial.nombre }}</td>
         <td>{{ editorial.pais }}</td>
+        <td>
+            <a href="{% url 'editorial_update' editorial.pk %}">Editar</a>
+            <a href="{% url 'editorial_delete' editorial.pk %}" style="color: #ff4136;">Borrar</a>
+        </td>
     </tr>
     {% empty %}
     <tr>
-        <td colspan="2">No hay editoriales disponibles en el catálogo.</td>
+        <td colspan="3">No hay editoriales disponibles en el catálogo.</td>
     </tr>
     {% endfor %}
     </tbody>

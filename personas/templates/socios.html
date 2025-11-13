@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h2>Gestión de Socios</h2>
 <a href="{% url 'socio_create' %}">Registrar Nuevo Socio</a>
@@ -10,7 +9,7 @@
             <th>Email</th>
             <th>Teléfono</th>
             <th>Activo</th>
-        </tr>
+            <th>Acciones</th> </tr>
     </thead>
     <tbody>
         {% for socio in socios %}
@@ -19,13 +18,16 @@
             <td>{{ socio.email }}</td>
             <td>{{ socio.telefono }}</td>
             <td>{{ socio.activo }}</td>
+            <td>
+                <a href="{% url 'socio_update' socio.pk %}">Editar</a>
+                <a href="{% url 'socio_delete' socio.pk %}" style="color: #ff4136;">Borrar</a>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4" class="text-center text-muted">No hay socios registrados.</td>
+            <td colspan="5" class="text-center text-muted">No hay socios registrados.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}

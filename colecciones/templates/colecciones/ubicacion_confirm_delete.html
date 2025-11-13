@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Borrar Ubicación</h1>
+    <p>¿Estás seguro de que quieres borrar la ubicación: <strong>{{ object }}</strong>?</p>
+    <p style="color: #ffc107;">Advertencia: Los ejemplares en esta ubicación no se borrarán, pero su campo de ubicación se pondrá en NULO (SET_NULL).</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="color: red;">Confirmar Borrado</button>
+        <a href="{% url 'lista_ubicaciones' %}">Cancelar</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Borrar Proveedor</h1>
+    <p>¿Estás seguro de que quieres borrar al proveedor: <strong>{{ object.nombre }}</strong>?</p>
+    <p style="color: #ffc107;">Advertencia: Si este proveedor tiene ingresos de inventario asociados, no podrás borrarlo (se pondrán en NULO).</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="color: red;">Confirmar Borrado</button>
+        <a href="{% url 'provedores' %}">Cancelar</a>
+    </form>
+{% endblock %}

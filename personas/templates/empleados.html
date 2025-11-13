@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h2>Gestión de Empleados</h2>
 <a href="{% url 'empleado_create' %}">Registrar Nuevo Empleado</a>
@@ -10,7 +9,7 @@
             <th>Nombre</th>
             <th>Email</th>
             <th>Rol</th>
-        </tr>
+            <th>Acciones</th> </tr>
     </thead>
     <tbody>
         {% for empleado in empleados %}
@@ -18,13 +17,16 @@
             <td>{{ empleado.nombre }}</td>
             <td>{{ empleado.email }}</td>
             <td>{{ empleado.rol }}</td>
+            <td>
+                <a href="{% url 'empleado_update' empleado.pk %}">Editar</a>
+                <a href="{% url 'empleado_delete' empleado.pk %}" style="color: #ff4136;">Borrar</a>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="3" class="text-center text-muted">No hay empleados registrados.</td>
+            <td colspan="4" class="text-center text-muted">No hay empleados registrados.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}

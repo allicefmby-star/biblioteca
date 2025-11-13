@@ -7,13 +7,16 @@
     <thead>
         <tr>
             <th>Nombre de la Categoría</th>
-        </tr>
+            <th>Acciones</th> </tr>
     </thead>
     <tbody>
     {% for Categoria in categorias %}
     <tr>
         <td>{{ Categoria.nombre }}</td>
-        
+        <td>
+            <a href="{% url 'categoria_update' Categoria.pk %}">Editar</a>
+            <a href="{% url 'categoria_delete' Categoria.pk %}" style="color: #ff4136;">Borrar</a>
+        </td>
     </tr>
     {% empty %}
     <tr>

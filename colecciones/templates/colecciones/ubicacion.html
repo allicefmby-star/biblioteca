@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Ubicaciones Físicas</h2>
-<a href="{% url 'ubicacion_create' %}">Crear Nueva Ubicación</a>
-    <table class="table table-striped table-bordered">
+<a href="{% url 'ubicacion_create' %}">Crear Nueva Ubicación</a> <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>Sala</th>
                 <th>Estante</th>
                 <th>Nivel</th>
-            </tr>
+                <th>Acciones</th> </tr>
         </thead>
         <tbody>
             {% for ubicacion in ubicaciones %}
@@ -16,10 +15,14 @@
                 <td>{{ ubicacion.sala }}</td>
                 <td>{{ ubicacion.estante }}</td>
                 <td>{{ ubicacion.nivel }}</td>
+                <td>
+                    <a href="{% url 'ubicacion_update' ubicacion.pk %}">Editar</a>
+                    <a href="{% url 'ubicacion_delete' ubicacion.pk %}" style="color: #ff4136;">Borrar</a>
+                </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="3" class="text-center text-muted">No hay ubicaciones agregadas.</td>
+                <td colspan="4" class="text-center text-muted">No hay ubicaciones agregadas.</td>
             </tr>
             {% endfor %}
         </tbody>

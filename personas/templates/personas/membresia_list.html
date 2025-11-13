@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h2>Gestión de Membresías</h2>
 <a href="{% url 'membresia_create' %}">Crear Nueva Membresía</a>
@@ -11,7 +10,7 @@
             <th>Tipo de Membresía</th>
             <th>Fecha de Inicio</th>
             <th>Fecha de Fin</th>
-        </tr>
+            <th>Acciones</th> </tr>
     </thead>
     <tbody>
         {% for membresia in membresias %}
@@ -20,13 +19,16 @@
             <td>{{ membresia.tipo }}</td>
             <td>{{ membresia.inicio }}</td>
             <td>{{ membresia.fin }}</td>
+            <td>
+                <a href="{% url 'membresia_update' membresia.pk %}">Editar</a>
+                <a href="{% url 'membresia_delete' membresia.pk %}" style="color: #ff4136;">Borrar</a>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4" class="text-center text-muted">No hay membresías registradas.</td>
+            <td colspan="5" class="text-center text-muted">No hay membresías registradas.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}
